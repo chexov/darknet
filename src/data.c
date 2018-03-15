@@ -217,6 +217,7 @@ void fill_truth_swag(char *path, float *truth, int classes, int flip, float dx, 
 {
     char labelpath[4096];
     find_replace(path, "images", "labels", labelpath);
+    printf("%s -> %s", path, labelpath);
     find_replace(labelpath, "JPEGImages", "labels", labelpath);
     find_replace(labelpath, ".jpg", ".txt", labelpath);
     find_replace(labelpath, ".JPG", ".txt", labelpath);
@@ -414,6 +415,7 @@ void fill_truth_detection(char *path, int num_boxes, float *truth, int classes, 
     find_replace(labelpath, "raw", "labels", labelpath);
     find_replace(labelpath, ".jpg", ".txt", labelpath);
     find_replace(labelpath, ".png", ".txt", labelpath);
+    find_replace(labelpath, ".PNG", ".txt", labelpath);
     find_replace(labelpath, ".JPG", ".txt", labelpath);
     find_replace(labelpath, ".JPEG", ".txt", labelpath);
     int count = 0;

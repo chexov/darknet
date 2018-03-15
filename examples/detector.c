@@ -564,11 +564,20 @@ void validate_detector_recall(char *cfgfile, char *weightfile)
 
 void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filename, float thresh, float hier_thresh, char *outfile, int fullscreen)
 {
+    fprintf(stdout, "datacfg %s\n", datacfg);
+    fprintf(stdout, "cfgfile %s\n", cfgfile);
+    fprintf(stdout, "weightfile %s\n", weightfile);
+    fprintf(stdout, "filename %s\n\n", filename);
+
     list *options = read_data_cfg(datacfg);
     char *name_list = option_find_str(options, "names", "data/names.list");
+    fprintf(stdout, "namelist %s\n\n", name_list);
     char **names = get_labels(name_list);
 
     image **alphabet = load_alphabet();
+
+    fprintf(stdout, "GA");
+
     network *net = load_network(cfgfile, weightfile, 0);
     set_batch_network(net, 1);
     srand(2222222);
